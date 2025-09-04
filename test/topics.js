@@ -1229,10 +1229,19 @@ describe('Topic\'s', () => {
 		// });
 
 		// ChatGPT suggested test change
-		it('should get suggested topics', async () => {
-			const topicsList = await topics.getSuggestedTopics({ tid: tid1, uid: adminUid, start: 0, stop: -1 });
-			assert(Array.isArray(topicsList));
+		it('should return suggested topics', (done) => {
+			console.log('First test call for suggested topics');
+			const params = [tid1, adminUid, 0, -1];
+			const [tid, uid, start, stop] = params;
+
+			topics.getSuggestedTopics({ tid, uid, start, stop }).then((topicsList) => {
+				assert(Array.isArray(topicsList));
+				done();
+			}).catch((err) => { done(err);
+			});
+			console.log('First test call for suggested topics: completed');
 		});
+
 
 
 		// Original test code call
@@ -1245,18 +1254,23 @@ describe('Topic\'s', () => {
 		// });
 
 		// ChatGPT suggested test change
-		it('should return suggested topics', async () => {
-			const topicsList = await topics.getSuggestedTopics({
-				tid: tid3,
-				uid: adminUid,
-				start: 0,
-				stop: 2,
+		it('should return suggested topics', (done) => {
+			console.log('Second test call for suggested topics');
+			const params = [tid3, adminUid, 0, 2];
+			const [tid, uid, start, stop] = params;
+
+			topics.getSuggestedTopics({ tid, uid, start, stop }).then((topicsList) => {
+				assert(Array.isArray(topicsList));
+				done();
+			}).catch((err) => { done(err);
+
 			});
-			assert(Array.isArray(topicsList));
+			console.log('Second test call for suggested topics: completed');
 		});
 
 	});
 	// End of changes suggested by ChatGPT
+	
 	describe('unread', () => {
 		const socketTopics = require('../src/socket.io/topics');
 		let tid;

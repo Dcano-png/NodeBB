@@ -9,8 +9,10 @@ const privileges = require('../privileges');
 const plugins = require('../plugins');
 
 module.exports = function (Topics) {
+	
 	Topics.getSuggestedTopics = async function ({tid, uid, start, stop, cutoff = 0}) {
 		let tids;
+		console.log('DIANA');
 		if (!tid) {
 			return [];
 		}
