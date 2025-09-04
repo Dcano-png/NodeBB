@@ -1219,6 +1219,7 @@ describe('Topic\'s', () => {
 			tid3 = topic3.topicData.tid;
 		});
 
+		// Original test code call
 		// it('should return suggested topics', (done) => {
 		// topics.getSuggestedTopics(tid1, adminUid, 0, -1, (err, topics) => {
 		// assert.ifError(err);
@@ -1227,13 +1228,14 @@ describe('Topic\'s', () => {
 		// });
 		// });
 
+		// ChatGPT suggested test change
 		it('should get suggested topics', async () => {
 			const topicsList = await topics.getSuggestedTopics({ tid: tid1, uid: adminUid, start: 0, stop: -1 });
 			assert(Array.isArray(topicsList));
 		});
 
 
-
+		// Original test code call
 		// it('should return suggested topics', (done) => {
 		// topics.getSuggestedTopics(tid3, adminUid, 0, 2, (err, topics) => {
 		// assert.ifError(err);
@@ -1242,6 +1244,7 @@ describe('Topic\'s', () => {
 		//});
 		// });
 
+		// ChatGPT suggested test change
 		it('should return suggested topics', async () => {
 			const topicsList = await topics.getSuggestedTopics({
 				tid: tid3,
@@ -1253,7 +1256,7 @@ describe('Topic\'s', () => {
 		});
 
 	});
-
+	// End of changes suggested by ChatGPT
 	describe('unread', () => {
 		const socketTopics = require('../src/socket.io/topics');
 		let tid;
